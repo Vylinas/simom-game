@@ -1,0 +1,36 @@
+body{
+    background-color: rgb(37, 36, 37); 
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.container{
+    display: flex;
+}
+
+.case{
+    width: 220px;
+    height: 220px;
+    margin: 8px 4px;
+}
+
+#case1{
+    /* origine : F25022*/
+    background-color: #F25022;
+}
+
+#case2{
+    /* origine : 7FBA00*/
+    background-color: #7FBA00;
+}
+
+#case3{
+    /* origine : 00A4EF*/
+    background-color: #00A4EF;
+}
+
+#case4{
+    /* origine : FFB900*/
+    background-color: #FFB900;
+}
