@@ -10,6 +10,8 @@ let case4 = $('#case4');
 let iteration = [];
 let inputIteration = [];
 let lvl = 0;
+let bestScore = 0;
+let currentScore = 0;
 
 /**************************
 * CORE PLAY
@@ -27,6 +29,7 @@ function initSequence()
     if(iteration.length === 0){
         for (let i = 0; i <= 2; i++) {
             nextIteration();
+
         }
     }
 
@@ -36,22 +39,42 @@ function validateInput()
 {
     if(iteration[lvl] !== inputIteration[lvl]) 
     {
-        iteration = [];
-        inputIteration = [];
-        lvl = 0;
+        reset();
         alert('Game Over, Click Ok to try again !');
     } else 
     {
         lvl++;
         if(lvl === iteration.length){
+            success();
             alert('Good Game !');
-            inputIteration = [];
-            lvl = 0;
             nextIteration();
             displayIteration();
+            displayScore();
         }
     }
 
+}
+
+function displayScore() 
+{
+    $('.currentScore').html(currentScore);
+    let currentBestScore = $('.bestScore').text();
+    if(bestScore > currentBestScore) {
+        $('.bestScore').html(bestScore);
+    }
+}
+function success() {
+    bestScore++;
+    currentScore++;
+    inputIteration = [];
+    lvl = 0;
+}
+function reset() {
+    iteration = [];
+    inputIteration = [];
+    lvl = 0;
+    currentScore = 0;
+    bestScore = 0;
 }
 
 function changeColor(c)
@@ -96,6 +119,7 @@ function displayIteration()
             time = time + 800;
         });
     }, 500);
+
 }
 
 /**************************

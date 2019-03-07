@@ -41,21 +41,24 @@ PANEL CONTROL
 ******************************/
 
 .panel{
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .panel button{
     width: 150px;
     height: 40px;
-    background-color: aqua;
+    font-family: Helvetica, sans-serif;
+    background-color: #00C3FF;
     border-radius: 10px;
     font-size: 125%;
-    color: white;
+    color: rgb(243, 243, 243);
 }
 
 h2{
     font-family: Helvetica, sans-serif;
-    color: white;
+    color: #00C3FF;
 }
 
 .panel div{
