@@ -14,7 +14,7 @@ let bestScore = 0;
 let currentScore = 0;
 
 /**************************
-* CORE PLAY
+* FUNCTION PLAY
 *************************/
 
 function nextIteration() 
@@ -63,49 +63,37 @@ function displayScore()
         $('.bestScore').html(bestScore);
     }
 }
-function success() {
-    bestScore++;
-    currentScore++;
-    inputIteration = [];
-    lvl = 0;
-}
-function reset() {
-    iteration = [];
-    inputIteration = [];
-    lvl = 0;
-    currentScore = 0;
-    bestScore = 0;
-}
+
 
 function changeColor(c)
 {
     switch (c) {
         case 'case1':
-            $('#case1').css({"backgroundColor": "#ee7452"});
-            setTimeout(function (){
-                $('#case1').css({"backgroundColor": "#F25022"});
-            }, 500);
-            break;
+        $('#case1').css({"backgroundColor": "#ee7452"});
+        setTimeout(function (){
+            $('#case1').css({"backgroundColor": "#F25022"});
+        }, 500);
+        break;
         case 'case2':
-            $('#case2').css({"backgroundColor": "#9ed428"});
-            setTimeout(function (){
-                $('#case2').css({"backgroundColor": "#7FBA00"});
-            }, 500);
-            break;
+        $('#case2').css({"backgroundColor": "#9ed428"});
+        setTimeout(function (){
+            $('#case2').css({"backgroundColor": "#7FBA00"});
+        }, 500);
+        break;
         case 'case3':
-            $('#case3').css({"backgroundColor": "#5ecafc"});
-            setTimeout(function (){
-                $('#case3').css({"backgroundColor": "#00A4EF"});
-            }, 500);
-            break;
+        $('#case3').css({"backgroundColor": "#5ecafc"});
+        setTimeout(function (){
+            $('#case3').css({"backgroundColor": "#00A4EF"});
+        }, 500);
+        break;
         case 'case4':
-            $('#case4').css({"backgroundColor": "#fdcf51"});
-            setTimeout(function (){
-                $('#case4').css({"backgroundColor": "#FFB900"});
-            }, 500);
-            break;
+        $('#case4').css({"backgroundColor": "#fdcf51"});
+        setTimeout(function (){
+            $('#case4').css({"backgroundColor": "#FFB900"});
+        }, 500);
+        break;
     }
-
+    
 }
 
 function displayIteration()
@@ -119,12 +107,28 @@ function displayIteration()
             time = time + 800;
         });
     }, 500);
-
+    
 }
 
+function success() {
+    bestScore++;
+    currentScore++;
+    inputIteration = [];
+    lvl = 0;
+}
+
+function reset() {
+    iteration = [];
+    inputIteration = [];
+    lvl = 0;
+    currentScore = 0;
+    bestScore = 0;
+}
+
+
 /**************************
-* IN GAME
-*************************/
+ * CORE GAME
+ *************************/
 
 $("#case1").click(() => {
     changeColor('case1');
