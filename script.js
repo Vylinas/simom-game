@@ -1,6 +1,6 @@
-console.log('%c Le fichier js est chargé', 'color: green; font-weight: bold;')
+console.log('%c Script load', 'color: green; font-weight: bold;')
 if ($) {
-    console.log('%c Jquery est chargé', 'color: green; font-weight: bold;')
+    console.log('%c Jquery load', 'color: green; font-weight: bold;')
 }
 
 let case1 = $('#case1');
@@ -19,15 +19,17 @@ function nextIteration()
 {
     let numberRandom = Math.floor((Math.random() * 4) + 1);
     iteration = [...iteration, `case${numberRandom}`];
-    console.table(iteration);
 
 }
 
 function initSequence() 
 {
-    for (let i = 0; i <= 2; i++) {
-        nextIteration();
+    if(iteration.length === 0){
+        for (let i = 0; i <= 2; i++) {
+            nextIteration();
+        }
     }
+
 }
 
 function validateInput()
@@ -37,14 +39,12 @@ function validateInput()
         iteration = [];
         inputIteration = [];
         lvl = 0;
-        alert('Game Over, Click Ok pour rejouer !');
+        alert('Game Over, Click Ok to try again !');
     } else 
     {
         lvl++;
-        console.log('ok');
         if(lvl === iteration.length){
-            console.log('OK seq');
-            alert('Well Done !');
+            alert('Good Game !');
             inputIteration = [];
             lvl = 0;
             nextIteration();
@@ -85,50 +85,48 @@ function changeColor(c)
 
 }
 
-/**************************
-* RENDER PLAY
-*************************/
-
 function displayIteration()
 {
-    let time = 0;
-    iteration.forEach(element => {
-        setTimeout(() => {
-            changeColor(element);
-        }, time);
-        time = time + 800;
-    });
-
+    setTimeout(() => {
+        let time = 0;
+        iteration.forEach(element => {
+            setTimeout(() => {
+                changeColor(element);
+            }, time);
+            time = time + 800;
+        });
+    }, 500);
 }
 
 /**************************
 * IN GAME
 *************************/
 
-$("#case1").click(function() {
+$("#case1").click(() => {
     changeColor('case1');
     inputIteration = [...inputIteration, 'case1'];
     validateInput();
   });
 
-$("#case2").click(function() {
+$("#case2").click(() => {
     changeColor('case2');
     inputIteration = [...inputIteration, $('#case2').attr('id')];
     validateInput();
   });
 
-$("#case3").click(function() {
+$("#case3").click(() => {
     changeColor('case3');
     inputIteration = [...inputIteration, $('#case3').attr('id')];
     validateInput();
   });
 
-$("#case4").click(function() {
+$("#case4").click(() => {
     changeColor('case4');
     inputIteration = [...inputIteration, $('#case4').attr('id')];
     validateInput();
   });
 
-initSequence();
-console.table(iteration);
-displayIteration();
+$(".start").click(() => {
+    initSequence();
+    displayIteration();
+  });
